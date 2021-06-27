@@ -1,0 +1,39 @@
+.container {
+    display: block;
+    position: relative;
+  }
+  
+  .container::after {
+    content: "";
+    background-image: url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r0AWsZ9dBvC2No3kND9nxv3iRbb.jpg');
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
+  
+  h1{
+    text-align: center;
+  }
+  
+  img{
+    width: 25%;
+  }
+  
+  li{
+    display: inline-block;
+    padding: 0 10px;
+  }
+  
+  .movieProfileCard{
+    display: flex;
+    gap: 30px;
+    padding: 30px 30px;
+  }
+  
+  .cast{
+    display: flex;
+  }

@@ -1,14 +1,19 @@
 import './App.css';
+
+import MovieProfile from './MovieProfile';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Movie from './Components/Movie';
+
 
 
 function App() {
   return (
    <>
-      <h1>
-        Ready 
-      </h1>
-      <Movie/>
+
+
+      <MovieProfile />
+
       
    </>
   );
