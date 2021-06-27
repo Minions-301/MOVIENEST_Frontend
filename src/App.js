@@ -1,4 +1,6 @@
 import './App.css';
+import Movie from './Components/Movie';
+
 
 function App() {
   return (
@@ -6,6 +8,8 @@ function App() {
       <h1>
         Ready 
       </h1>
+      <Movie/>
+      
    </>
   );
 }
