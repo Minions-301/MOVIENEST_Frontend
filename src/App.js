@@ -1,4 +1,7 @@
 import './App.css';
+import Login from './login';
+import Logout from './logout';
+// import User from './user';
 
 function App() {
   return (
@@ -6,6 +9,9 @@ function App() {
       <h1>
         Ready 
       </h1>
+      <Login />
+      <Logout />
+      {/* <User /> */}
    </>
   );
 }
