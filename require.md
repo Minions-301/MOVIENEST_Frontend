@@ -4,6 +4,6 @@ About
 Modern fast movie database web app with React using The Movie DB API. All the new popular movies are populated along with search bar for your own movie search. Clicking on specific movies bring you all data about the movie including actors, directors, time, budget, revenue, rating and many more.
 
 ## Data Flow :
-![](s1.png)
-![](s2.png)
-![](s3.png)
+![](IMGs/s1.png)
+![](IMGs/s2.png)
+![](IMGs/s3.png)

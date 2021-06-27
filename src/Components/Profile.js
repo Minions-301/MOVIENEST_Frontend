@@ -1,23 +1,114 @@
 import React from 'react';
-
+import axios from 'axios';
+import { withAuth0 } from '@auth0/auth0-react';
+import { Row, Col } from 'react-bootstrap';
+import WatchedList from './WatchedList'
 class Profile extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            watchedList: [],
+            watchList: [],
+
+        };
+    }
+    addMovieToWatchList=async(movie)=>{
+        const  req= {
+            movie_ID: movie.movie_ID,
+            email: this.props.auth0.user.email,
+            title:movie.title,
+            overview:movie.overview, 
+            release_date:movie.release_date,
+            vote_average:movie.vote_average
+        };
+        try {
+            const watchList = await axios.post(`${process.env.REACT_APP_SERVER}/movies`,req);
+          this.setState({
+              watchList:watchList
+          })
+
+        } catch(err) {
+            console.log(err);
+        }
+
+    }
+    moveFromWatchListToWatched = async (id) => {
+        const  req= {
+            movie_ID: id,
+            email: this.props.auth0.user.email
+        };
+        try {
+            const watchList = await axios.put(
+                `${process.env.REACT_APP_SERVER}/watchList`,req);
+          this.getWatchedList();
+          this.getWatchList();
+
+        } catch(err) {
+            console.log(err);
+        }
+    }
+    deleteMovieFromWatchList=async(id)=>{
+        try {
+            const watchList = await axios.delete(`${process.env.REACT_APP_SERVER}/watchList/${id}`);
+            this.setState({
+                watchList:watchList
+            })
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+
+    getWatchedList = async () => {
+        try {
+            const watchedList = await axios.get(`${process.env.REACT_APP_SERVER}/watchedList?email=${this.props.auth0.user.email}`)
+            this.setState({
+                watchedList: watchedList.data,
+            })
+        } catch {
+            console.log("Error in reviews Request");
+        }
+
+    }
+    getWatchList = async () => {
+        try {
+            const watchList = await axios.get(`${process.env.REACT_APP_SERVER}/watchList?email=${this.props.auth0.user.email}`)
+            this.setState({
+                watchList: watchList.data,
+            })
+        } catch {
+            console.log("Error in reviews Request");
+        }
+
+    }
 
     render() {
         return (
             <>
-
-
-                            <h1>hi frosdcsdvfd bdbgggggggggggggggggggggggggggggggggggggggggggggbm Profile</h1>
-                            <h1>hi frosdcsdvfd bdbgggggggggggggggggggggggggggggggggggggggggggggbm Profile</h1>
-                            <h1>hi frosdcsdvfd bdbgggggggggggggggggggggggggggggggggggggggggggggbm Profile</h1>
-                            <h1>hi frosdcsdvfd bdbgggggggggggggggggggggggggggggggggggggggggggggbm Profile</h1>
-
+                <div className="gap"></div>
+                <h1>Watch List</h1>
+                <Row className="justify-content-md-center">
+                    {this.state.watchList.map((movie, index) => (
+                        <Col md="auto">
+                            <WatchedList index={index} movie={movie} />
+                        </Col>
+                    ))}
+                </Row>
+                <div className="gap"></div>
+                <h1>Watched List</h1>
+                <Row className="justify-content-md-center">
+                    {this.state.watchedList.map((movie, index) => (
+                        <Col md="auto">
+                            <WatchedList index={index} movie={movie} />
+                        </Col>
+                    ))}
+                </Row>
 
             </>
 
         );
     }
 }
-export default Profile;
+export default withAuth0(Profile);
 
 
