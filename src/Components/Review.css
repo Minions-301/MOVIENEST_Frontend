@@ -1,0 +1,26 @@
+.addReviewContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 30px;
+}
+
+.addReview{
+    display: flex;
+    gap: 30px;
+}
+
+.addReviewImg{
+    width: 150px;
+    height: 150px;
+}
+
+.review{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+p{
+    text-align: justify;
+}
