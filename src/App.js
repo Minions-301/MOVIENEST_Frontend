@@ -1,34 +1,36 @@
+import React from "react";
 import './App.css';
-import Login from './login';
-import Logout from './logout';
-// import User from './user';
-
-import MovieProfile from './MovieProfile';
+import Profile from './Components/Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Movie from './Components/Movie';
+import Header from './Components/Header';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { withAuth0 } from '@auth0/auth0-react';
+
+class App extends React.Component {
 
 
+  render() {
+    const { isAuthenticated } = this.props.auth0;
+    return (
+      <>
 
-function App() {
-  return (
-   <>
+        <Router>
+          <Header/>
+          <Switch>
+            <Route exact path="/" component={Movie} />
+          </Switch>
+          <Switch>
+            <Route exact path="/proflie" component={isAuthenticated&& Profile} />
+            <Route exact path="/aboutus" component={ Movie/*AboutUs*/} />
 
-      <h1>
-        Ready 
-      </h1>
-      <Login />
-      <Logout />
-      {/* <User /> */}
+          </Switch>
+        </Router>
+  
 
-
-
-      <MovieProfile />
-
-      
-
-   </>
-  );
+      </>
+    );
+  }
 }
 
-export default App;
+export default withAuth0(App);

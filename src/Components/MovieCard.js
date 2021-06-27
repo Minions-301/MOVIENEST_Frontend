@@ -1,10 +1,23 @@
 import React from 'react';
 import {Card,ListGroup,ListGroupItem,Button} from 'react-bootstrap';
-// import './MovieCard.css';
 
-//import 'bootstrap/dist/css/bootstrap.min.css';
 
 class MovieCard extends React.Component {
+
+
+  //continue form here
+  addTowatchList=async(movie)=> {
+    const movieparam = {
+      movie_ID: movie.movie_ID,
+      title: movie.title,
+      overview: movie.overview,
+      email: this.props.auth0.user.email,
+      release_date:movie.release_date,
+      vote_average:movie.vote_average
+    };
+
+  }
+
 
   render() {
     return (
@@ -27,8 +40,8 @@ class MovieCard extends React.Component {
               <ListGroupItem>vote avg:{this.props.movie.vote_average}</ListGroupItem>
             </ListGroup>
             <Card.Body>
-              <Button> <a href="#" class="btn btn-primary">ADD TO WATCH LIST</a></Button>
-              <Button ><a href="#" class="btn btn-primary"> AS Watched</a></Button>
+              <Button class="btn btn-primary" onClick={()=>{this.addTowatchList(this.props.movie)}}> ADD TO WATCH LIST</Button>
+              <Button  class="btn btn-primary" onClick={()=>{this.addTowatchList(this.props.movie)}}> AS Watched</Button>
             </Card.Body>
           </Card>
 
