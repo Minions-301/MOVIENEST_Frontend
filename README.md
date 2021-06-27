@@ -24,8 +24,8 @@ Through this project you will be able to watch movies online for the entire worl
 
 We use movie schema , reviews schema and users schema.
 
-![](d1.jpeg)
-![](d2.jpeg)
-![](d3.jpeg)
+![](IMGs/d1.jpeg)
+![](IMGs/d2.jpeg)
+![](IMGs/d3.jpeg)
 
 
