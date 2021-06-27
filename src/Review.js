@@ -12,9 +12,7 @@ class Review extends Component {
       newReview: "",
       changeReview: "",
       reviewsState: [],
-      addReviewState: [],
-      updateReviewState: [],
-      deleteReviewState: []
+
     };
   }
 
@@ -38,9 +36,9 @@ class Review extends Component {
     console.log(this.state.newReview);
     const newReveiwData = {
       userReview: this.state.newReview,
-      // name: this.props.auth0.user.name,
-      // movie_ID: this.props.auth0.user.movie_ID,
-      // userEmail: this.props.auth0.user.email
+      name: this.props.auth0.user.name,
+      movie_ID: this.props.auth0.user.movie_ID,
+      email: this.props.auth0.user.email
     };
     try {
       const addReviewReq = await axios.post(
@@ -67,8 +65,8 @@ class Review extends Component {
     event.preventDefault();
     const updateReveiwData = {
       updatedReview: this.state.changeReview,
-      // movie_ID: this.props.auth0.user.movie_ID,
-      // userEmail: this.props.auth0.user.email
+      movie_ID: this.props.auth0.user.movie_ID,
+      email: this.props.auth0.user.email
     };
     try {
       const updateReviewReq = await axios.put(
@@ -100,7 +98,7 @@ class Review extends Component {
         reviewsState: deleteReviewReq.data,
       });
     } catch {
-      console.log("Error in update Request");
+      console.log("Error in delete Request");
     }
   };
 
@@ -110,7 +108,7 @@ class Review extends Component {
       reviewsState: reviewsReq.data,
     })
   } catch{
-
+    console.log("Error in reviews Request");
   }
     
   }
