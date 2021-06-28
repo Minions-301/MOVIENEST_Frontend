@@ -4,7 +4,6 @@ import axios from "axios";
 import MovieCard from "./MovieCard";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import Modal from './Modal'
 
 class Movie extends React.Component {
   constructor(props) {
@@ -75,16 +74,10 @@ class Movie extends React.Component {
       console.log(error);
     }
   };
-
-  openMovieProfile = () => {
-    console.log('open movie profile');
-    
-  }
   render() {
     return (
       <>
         <h1>Most 5 Movies Watched</h1>
-        <Modal />
         <Row className="justify-content-md-center">
           {this.state.mostWatched.map((item, idx) => (
             <Col md="auto">
@@ -113,7 +106,7 @@ class Movie extends React.Component {
         <Row className="justify-content-md-center">
           {this.state.searchResult.map((item, idx) => (
             <Col md="auto">
-              <MovieCard openMovieProfile={this.openMovieProfile} movie={item} key={idx} />
+              <MovieCard movie={item} key={idx} />
             </Col>
           ))}
         </Row>

@@ -1,7 +1,6 @@
 import './MovieCard.css';
 import axios from "axios";
 import React from "react";
-// import MovieProfile from './MovieProfile';
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { withAuth0 } from '@auth0/auth0-react';
 import { Link } from "react-router-dom";
@@ -69,7 +68,6 @@ class MovieCard extends React.Component {
   render() {
     return (
       <>
-
      
           <div to={`movie/${this.props.movie.id}`} className='movieCardContainer'>
             {this.props.movie && (
