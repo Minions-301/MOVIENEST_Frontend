@@ -4,6 +4,8 @@ import Logout from './Logout'
 import { Link } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import { withAuth0 } from '@auth0/auth0-react';
+import  './Header.css'
+import  './reset.css'
 class Header extends React.Component {
 
     render() {
@@ -11,16 +13,19 @@ class Header extends React.Component {
         console.log(isAuthenticated);
         return (
             <>
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand>MovieNest</Navbar.Brand>
-                    <Link to="/">Home</Link>
+            
+                <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <img className = "logo"src = "https://i.pinimg.com/280x280_RS/04/49/5e/04495e7f52f4ab36c635906a2533753b.jpg" alt = "logoname"/>
+                    <Navbar.Brand className= "navbar">MOVIEnest</Navbar.Brand>
+                   
+                    <Link to="/">HOME</Link>
                     {
                         isAuthenticated &&
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/profile">PROFILE</Link>
                     }
-                    <Link to="/aboutus">AboutUs</Link>
+                    <Link to="/aboutus">ABOUT US</Link>
                     {
-                        !isAuthenticated ? <Login /> : <Logout />
+                        !isAuthenticated ? < Login /> : <Logout />
                     }
                 </Navbar>
                 {/* <Nav fill variant="tabs" defaultActiveKey="/">
