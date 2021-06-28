@@ -1,9 +1,12 @@
 import './Movie.css';
 import React from "react";
 import axios from "axios";
-import MovieCard from "./MovieCard";
+// import MovieCard from "./MovieCard";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import MovieCard1 from "./MovieCard1";
+
+
 
 class Movie extends React.Component {
   constructor(props) {
@@ -77,39 +80,44 @@ class Movie extends React.Component {
   render() {
     return (
       <>
-        <h1>Most 5 Movies Watched</h1>
-        <Row className="justify-content-md-center">
-          {this.state.mostWatched.map((item, idx) => (
-            <Col md="auto">
-              <MovieCard movie={item} key={idx} />
-            </Col>
-          ))}
-        </Row>
-        <Form onSubmit={this.getApiQuery}>
-          <input
+        <input
             className="input"
             name="query"
             placeholder="Search a film..."
           />
-          <button type="submit" icon="search">
-            Search
+          <button className = "searchbtn" type="submit" icon="search">
+            SEARCH
           </button>
-        </Form>
-        <select onChange={this.getApicategory}>
-          <option value="35">comedy</option>
-          <option value="18">drama</option>
-          <option value="28">action</option>
-          <option value="16">animation</option>
-          <option value="80">crime</option>
+     
+    <select className = "choose"onChange={this.getApicategory}> 
+        <option value="" disabled selected>SELECT OPTION</option>
+          <option value="35">COMEDY</option>
+          <option value="18">DRAMA</option>
+          <option value="28">ACTION</option>
+          <option value="16">ANIMATION</option>
+          <option value="80">CRIME</option>
         </select>
+     
+        <p className = "pTg">Most Movies Watched</p>
+      
+        <Row className="justify-content-md-center">
+          {this.state.mostWatched.map((item, idx) => (
+            <Col md="auto">
+              <MovieCard1 movie={item} key={idx} />
+            </Col>
+          ))}
+        </Row>
+        <Form onSubmit={this.getApiQuery}>
+        
 
         <Row className="justify-content-md-center">
           {this.state.searchResult.map((item, idx) => (
             <Col md="auto">
-              <MovieCard movie={item} key={idx} />
+              <MovieCard1 movie={item} key={idx} />
             </Col>
           ))}
         </Row>
+        </Form>
       </>
     );
   }

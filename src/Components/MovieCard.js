@@ -68,50 +68,58 @@ class MovieCard extends React.Component {
   render() {
     return (
       <>
-     
-          <div to={`movie/${this.props.movie.id}`} className='movieCardContainer'>
-            {this.props.movie && (
-              <Card className='mainMovieCard'>
-                   <Link to={`movieProfile/${this.props.movie.id}`}>
-                <Card.Img
-                  className='cardImg'
-                  variant="top"
-                  src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.props.movie.poster_path}`}
-                />
-                <Card.Body>
-                  <Card.Title> {this.props.movie.title}</Card.Title>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem> {this.props.movie.release_date}</ListGroupItem>
-                  <ListGroupItem>
-                    vote avg:{this.props.movie.vote_average}
-                  </ListGroupItem>
-                </ListGroup>
-                </Link>
-                <Card.Body>
-                  <Button
-                    class="btn btn-primary"
-                    onClick={() => {
-                      this.addTowatchList(this.props.movie);
-                    }}
-                  >
-                    {" "}
-                    ADD TO WATCH LIST
-                  </Button>
-                  <Button
-                    class="btn btn-primary"
-                    onClick={() => {
-                      this.addMovieAsWatched(this.props.movie);
-                    }}
-                  >
-                    {" "}
-                    AS Watched
-                  </Button>
-                </Card.Body>
-              </Card>
-            )}
-          </div>
-        
+
+      <div className='movieCardContainer'>
+        {this.props.movie && (
+          <Card className='mainMovieCard'>
+            <Card.Img
+              className='cardImg'
+              variant="top"
+              src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.props.movie.poster_path}`}
+            />
+            
+            <ListGroup className="list-group-flush">
+              <ListGroupItem className ="date"><Card.Body>
+              <Card.Title> {this.props.movie.title}</Card.Title>
+            </Card.Body>
+            <br/><br/> <p> {this.props.movie.release_date}</p>
+            <br/> <p className = "vot">votes avg :{this.props.movie.vote_average}/10</p></ListGroupItem>
+              {/* <ListGroupItem className = "vote">
+                vote avg:{this.props.movie.vote_average}
+              </ListGroupItem> */}
+            </ListGroup>
+            <Card.Body >
+              <div className = "buttonCard">
+              <Button
+                class="btn"
+                onClick={() => {
+                  this.addTowatchList(this.props.movie);
+                }}
+              >
+                {" "}
+                
+                ADD TO WATCH LIST
+              </Button>
+              <Button
+                class="btn"
+                onClick={() => {
+                  this.addTowatchList(this.props.movie);
+                }}
+              >
+                {" "}
+                AS Watched
+              </Button>
+              </div>
+            </Card.Body>
+          </Card>
+//           <Image src={require(`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.props.movie.poster_path}`)} style={{width: '100%', height: '100%'}}>
+//    <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+//      <Text>Centered text</Text>
+//    </View>
+// </Image>
+        )}
+        </div>
+
       </>
     );
   }

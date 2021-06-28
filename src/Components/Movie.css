@@ -2,3 +2,54 @@
     padding: 30px 0;
     gap: 30px;
 }
+.input{
+    width: 50%;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+ margin-left: 25%;
+}
+.searchbtn{
+    border: 2px solid;
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: none;
+    transition: all .4s ease;
+    padding-top: 3px;
+    font-size: small;
+    font-weight: bold;
+    margin: 3px;
+    margin-bottom: .25px;  
+}
+.searchbtn:hover, .searchbtn:focus {
+    background: var(--gradient) !important;
+-webkit-background-clip: none !important;
+-webkit-text-fill-color: #fff !important;
+border: 2px solid rgb(31, 30, 30) !important; 
+box-shadow: #222 1px 0 10px;
+text-decoration: none;
+}
+:root {
+--gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+}
+.pTg{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 45px;
+}
+
+select.choose{
+    background-color: #222;
+    border: none;
+    color: white;
+    width: fit-content;
+    margin-left: 20px;
+    font-size: 17px;
+    height: 27px ;
+
+}

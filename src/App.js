@@ -10,6 +10,7 @@ import MovieProfile from './Components/MovieProfile'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withAuth0 } from '@auth0/auth0-react';
 
+
 class App extends React.Component {
 
 
