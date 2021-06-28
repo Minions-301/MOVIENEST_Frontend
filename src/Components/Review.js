@@ -12,22 +12,9 @@ class Review extends Component {
       newReview: "",
       changeReview: "",
       reviewsState: [],
-
     };
   }
-
   componentDidMount = async () => {
-    console.log("addReview");
-    try {
-      const reviewsReq = await axios.get(
-        `http://localhost:3010/reviews?movie_ID=${this.props.movie_ID}`
-      );
-      this.setState({
-        reviews: reviewsReq.data,
-      });
-    } catch {
-      console.log("can not send the request");
-    }
     this.getReviews();
   };
 
@@ -46,9 +33,8 @@ class Review extends Component {
         newReveiwData
       );
       this.setState({
-        reviewsState: addReviewReq.data,
+        reviews: addReviewReq.data,
       });
-      console.log(this.state.reviewsState);
     } catch {
       console.log("Error in adding Request");
     }
@@ -61,22 +47,19 @@ class Review extends Component {
     console.log(this.state.newReview);
   };
 
-  updateReview = async(event,id) => {
+  updateReview = async (event, id) => {
     event.preventDefault();
+    console.log(id);
     const updateReveiwData = {
-      updatedReview: this.state.changeReview,
+      review_text: this.state.changeReview,
       movie_ID: this.props.movie_ID,
       email: this.props.auth0.user.email
     };
     try {
-      const updateReviewReq = await axios.put(
-        `http://localhost:3010/reviews/${id}`,
-        updateReveiwData
-      );
+      const updateReviewReq = await axios.put(`${process.env.REACT_APP_SERVER}/reviews/${id}`,updateReveiwData);
       this.setState({
-        reviewsState: updateReviewReq.data,
+        reviews: updateReviewReq.data,
       });
-      console.log(this.state.reviewsState);
     } catch {
       console.log("Error in update Request");
     }
@@ -90,27 +73,30 @@ class Review extends Component {
   };
 
   deleteReview = async (id) => {
+    console.log(id);
     try {
-      const deleteReviewReq = await axios.delete(
-        `http://localhost:3010/reviews/${id}`
-      );
+      const deleteReviewReq = await axios.delete(`${process.env.REACT_APP_SERVER}/reviews/${id}?movie_ID=${this.props.movie_ID}`);
       this.setState({
-        reviewsState: deleteReviewReq.data,
+        reviews: deleteReviewReq.data,
       });
+      console.log(deleteReviewReq.data);
     } catch {
       console.log("Error in delete Request");
     }
   };
 
-  getReviews = async() => {
-    try{const reviewsReq = await axios.get(`http://localhost:3010/reviews?movie_ID=${this.props.movie_ID}`)
-    this.setState({
-      reviewsState: reviewsReq.data,
-    })
-  } catch{
-    console.log("Error in reviews Request");
-  }
-    
+  getReviews = async () => {
+    console.log(this.props.movie_ID);
+    try {
+      const reviewsReq = await axios.get(`${process.env.REACT_APP_SERVER}/reviews?movie_ID=${this.props.movie_ID}`)
+      console.log(reviewsReq);
+      this.setState({
+        reviews: reviewsReq.data,
+      })
+    } catch {
+      console.log("Error in reviews Request");
+    }
+
   }
 
   render() {
@@ -125,32 +111,33 @@ class Review extends Component {
           />
           <div className="review">
             <div>
-            {this.state.reviews.map((item) => {
-              return (
-                <>
-                  <h3>A review by {item.user_name}</h3>
-                  <h6>
-                    Written by {item.user_name} on {item.date}
-                  </h6>
-                  <p>{item.review_text}</p>
-                  <Form onSubmit={this.updateReview}>
-                <Form.Group className="mb-3">
-                  <Form.Control
-                    type="text"
-                    placeholder="Add new review"
-                    onChange={this.onChangeReview}
-                  />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                  Update
-                </Button>
-              </Form>
-              <Button variant="primary" onClick={this.deleteReview}>
-                Delete
-              </Button>
-                </>
-              );
-            })}
+              {this.state.reviews.map((item) => {
+                return (
+                  <>
+                    <h3>A review by {item.name}</h3>
+                    <h6>
+                      Written by {item.email} on {item.date}
+                    </h6>
+                    <p>{item.review_text}</p>
+                    <Button variant="primary" onClick={() => this.deleteReview(item._id)}>
+                      Delete
+                    </Button>
+                    <Form onSubmit={(event) => { this.updateReview(event, item._id); }}>
+                      <Form.Group className="mb-3">
+                        <Form.Control
+                          type="text"
+                          placeholder="Add new review"
+                          onChange={this.onChangeReview}
+                        />
+                      </Form.Group>
+                      <Button variant="primary" type="submit">
+                        Update
+                      </Button>
+                    </Form>
+
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>
