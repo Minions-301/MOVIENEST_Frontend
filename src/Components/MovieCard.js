@@ -1,6 +1,7 @@
 import './MovieCard.css';
 import axios from "axios";
 import React from "react";
+// import MovieProfile from './MovieProfile';
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 
 class MovieCard extends React.Component {
@@ -40,7 +41,7 @@ class MovieCard extends React.Component {
       <>
       <div className='movieCardContainer'>
         {this.props.movie && (
-          <Card className='mainMovieCard'>
+          <Card onClick={this.props.openMovieProfile} className='mainMovieCard'>
             <Card.Img
               className='cardImg'
               variant="top"
