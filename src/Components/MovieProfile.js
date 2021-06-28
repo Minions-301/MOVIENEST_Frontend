@@ -16,13 +16,13 @@ class MovieProfile extends Component {
   componentDidMount = async () => {
     try {
       const dataReq = await axios.get(
-        `https://api.themoviedb.org/3/movie/504949?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4&language=en-US`
       );
       const castReq = await axios.get(
-        `https://api.themoviedb.org/3/movie/504949/credits?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4`
+        `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4`
       );
       const trailerReq = await axios.get(
-        `https://api.themoviedb.org/3/movie/504949/videos?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/videos?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4&language=en-US`
       );
       this.setState({
         data: dataReq.data,
@@ -78,7 +78,7 @@ class MovieProfile extends Component {
             </div>
           </div>
         </div>
-        <Review movie_ID={this.state.data.movie_ID} />
+        <Review movie_ID={this.props.match.params.id} />
       </div>
     );
   }

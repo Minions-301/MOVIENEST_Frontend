@@ -2,43 +2,73 @@ import './MovieCard.css';
 import axios from "axios";
 import React from "react";
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
-// import{ Image  } from "react-bootstrap";
-
+import { withAuth0 } from '@auth0/auth0-react';
+import { Link } from "react-router-dom";
 class MovieCard extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      addTowatchListState : [],
+      addTowatchListState: [],
     }
   }
   //continue form here
   addTowatchList = async (movie) => {
-    const movieparam = {
-      // movie_ID: movie.movie_ID,
-      // title: movie.title,
-      // overview: movie.overview,
-      // email: this.props.auth0.user.email,
-      // release_date: movie.release_date,
-      // vote_average: movie.vote_average,
-    }; try{
-      console.log('try to send addTowatchListReq');
-      const addTowatchListReq = await axios.post(
-        `http://localhost:3010/movies`,
-        movieparam
-      );
-      this.setState({
-        addTowatchListState:addTowatchListReq.data,
-      })
-    } catch{
-      console.log("Error in  addTowatchList Request");
+    console.log(movie);
+    console.log(this.props.auth0.user.email);
+    if (this.props.auth0.isAuthenticated) {
+      const movieparam = {
+        movie_ID: movie.id,
+        title: movie.title,
+        overview: movie.overview,
+        moviePoster: movie.poster_path,
+        email: this.props.auth0.user.email,
+        release_date: movie.release_date,
+        vote_average: movie.vote_average,
+      }; try {
+        console.log(movieparam);
+        const addTowatchListReq = await axios.post(`${process.env.REACT_APP_SERVER}/movies`, movieparam);
+        this.setState({
+          addTowatchListState: addTowatchListReq.data,
+        })
+      } catch {
+        console.log("Error in  addTowatchList Request");
+      }
+    } else {
+      console.log('please sign in');
     }
-    
 
-  };
+
+  }
+  addMovieAsWatched = async (movie) => {
+    if (this.props.auth0.isAuthenticated) {
+      const movieparam = {
+        movie_ID: movie.id,
+        title: movie.title,
+        overview: movie.overview,
+        moviePoster: movie.poster_path,
+        email: this.props.auth0.user.email,
+        release_date: movie.release_date,
+        vote_average: movie.vote_average,
+      }; try {
+        console.log('try to send addTowatchListReq');
+        const addTowatchListReq = await axios.post(`${process.env.REACT_APP_SERVER}/moviesWatched`, movieparam);
+        this.setState({
+          addTowatchListState: addTowatchListReq.data,
+        })
+      } catch {
+        console.log("Error in  addTowatchList Request");
+      }
+    } else {
+      console.log('please sign in');
+    }
+
+
+  }
 
   render() {
     return (
       <>
+
       <div className='movieCardContainer'>
         {this.props.movie && (
           <Card className='mainMovieCard'>
@@ -89,8 +119,9 @@ class MovieCard extends React.Component {
 // </Image>
         )}
         </div>
+
       </>
     );
   }
 }
-export default MovieCard;
+export default withAuth0(MovieCard);
