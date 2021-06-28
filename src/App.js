@@ -22,11 +22,7 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Movie} />
-          </Switch>
-          <Switch>
-            <Route exact path="/profile" component={UserProfile} />
-          </Switch>
-          <Switch>
+            <Route exact path="/profile"  component={isAuthenticated? UserProfile:Movie} />
             <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/movieProfile/:id" component={ MovieProfile} />
           </Switch>
