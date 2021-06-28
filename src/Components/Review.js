@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import { withAuth0 } from '@auth0/auth0-react';
 class Review extends Component {
   constructor(props) {
     super(props);
@@ -35,14 +35,14 @@ class Review extends Component {
     event.preventDefault();
     console.log(this.state.newReview);
     const newReveiwData = {
-      userReview: this.state.newReview,
+      review: this.state.newReview,
       name: this.props.auth0.user.name,
-      movie_ID: this.props.auth0.user.movie_ID,
+      movie_ID: this.props.movie_ID,
       email: this.props.auth0.user.email
     };
     try {
       const addReviewReq = await axios.post(
-        `http://localhost:3010/reviews`,
+        `${process.env.REACT_APP_SERVER}/reviews`,
         newReveiwData
       );
       this.setState({
@@ -65,7 +65,7 @@ class Review extends Component {
     event.preventDefault();
     const updateReveiwData = {
       updatedReview: this.state.changeReview,
-      movie_ID: this.props.auth0.user.movie_ID,
+      movie_ID: this.props.movie_ID,
       email: this.props.auth0.user.email
     };
     try {
@@ -173,4 +173,4 @@ class Review extends Component {
   }
 }
 
-export default Review;
+export default withAuth0(Review);

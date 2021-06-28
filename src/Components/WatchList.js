@@ -1,16 +1,15 @@
 import './MovieCard.css';
 import React from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { withAuth0 } from '@auth0/auth0-react';
+import { Link } from "react-router-dom";
 class WatchedList extends React.Component {
 
 
   render() {
     return (
       <>
-      {console.log(this.props.movie.movie_ID)}
-        <Link to={`movieProfile/${this.props.movie.movie_ID}`}>
+        <Link to={`movieProfile/${this.props.movie.movie_ID||0}`}>
           <div className='movieCardContainer'>
             {this.props.movie && (
               <Card className='mainMovieCard'>
@@ -29,24 +28,22 @@ class WatchedList extends React.Component {
                   </ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                  {/* <Button
-                  class="btn btn-primary"
-                  onClick={() => {
-                    this.props.addTowatchList(this.props.movie);
-                  }}
-                >
-                  {" "}
-                  DELETE
-                </Button>
-                <Button
-                  class="btn btn-primary"
-                  onClick={() => {
-                    this.props.addMovieAsWatched(this.props.movie);
-                  }}
-                >
-                  {" "}
-                  AS Watched
-                </Button> */}
+                  <Button
+                    class="btn btn-primary"
+                    onClick={() => {
+                      this.props.deleteMovieFromWatchList(this.props.movie._id);
+                    }}
+                  >
+                    {" "}
+                    DELETE
+                  </Button>
+                  <Button
+                    class="btn btn-primary"
+                    onClick={() => { this.props.moveFromWatchListToWatched(this.props.movie._id) }}
+                  >
+                    {" "}
+                    AS Watched
+                  </Button>
                 </Card.Body>
               </Card>
             )}

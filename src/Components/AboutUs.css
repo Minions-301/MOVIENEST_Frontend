@@ -2,7 +2,7 @@
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
 @import 'https://fonts.googleapis.com/css?family=Raleway:100,600';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300';
-html,
+/* html,
 body {
   width: 100%;
   height: 100%;
@@ -19,19 +19,16 @@ body {
   font-weight: 700;
   color: rgb(17, 16, 16);
 
-}
-.col-md-12 h2{
+} */
+.col-md-12 .ourTeam{
     font-weight: bolder;
     color: rgba(230, 78, 62, 0.9);
 }
 
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+h4
+ {
   margin: 0 0 20px 0;
   text-transform: none;
   color:rgba(230, 78, 62, 0.9);
