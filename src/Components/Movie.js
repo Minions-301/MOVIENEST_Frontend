@@ -4,7 +4,7 @@ import axios from "axios";
 // import MovieCard from "./MovieCard";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import MovieCard1 from "./MovieCard1";
+import MovieCard1 from "./MovieCard";
 
 
 
@@ -18,7 +18,7 @@ class Movie extends React.Component {
       value: "",
       direct: false,
       category: "",
-      query: "",
+      query: '',
     };
   }
 
@@ -66,7 +66,7 @@ class Movie extends React.Component {
 
   getApiQuery = async (event) => {
     event.preventDefault();
-    const url = `https://api.themoviedb.org/3/search/movie?query=${event.target.query.value}&api_key=98b1f578c2970f8efbe6ac02bd6a0cd4`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${this.state.query}&api_key=98b1f578c2970f8efbe6ac02bd6a0cd4`;
     try {
       const results = await axios.get(url);
 
@@ -77,6 +77,13 @@ class Movie extends React.Component {
       console.log(error);
     }
   };
+  searchtext=(e)=>{
+    this.setState({
+      query:e.target.value
+    })
+    
+
+  }
   render() {
     return (
       <>
@@ -84,8 +91,9 @@ class Movie extends React.Component {
             className="input"
             name="query"
             placeholder="Search a film..."
+            onChange={this.searchtext}
           />
-          <button className = "searchbtn" type="submit" icon="search">
+          <button onClick={this.getApiQuery} className = "searchbtn" type="submit" icon="search">
             SEARCH
           </button>
      

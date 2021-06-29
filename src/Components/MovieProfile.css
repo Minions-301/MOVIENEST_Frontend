@@ -5,7 +5,7 @@
   
   .container::after {
     content: "";
-    background-image: url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r0AWsZ9dBvC2No3kND9nxv3iRbb.jpg');
+    
     opacity: 0.5;
     top: 0;
     left: 0;

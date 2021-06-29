@@ -21,7 +21,7 @@ class Header extends React.Component {
                     <Link to="/">HOME</Link>
                     {
                         isAuthenticated &&
-                        <Link to="/profile">PROFILE</Link>
+                        <Link to="/userprofile">PROFILE</Link>
                     }
                     <Link to="/aboutus">ABOUT US</Link>
                     {

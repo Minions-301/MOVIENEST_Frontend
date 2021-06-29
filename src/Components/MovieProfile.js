@@ -37,9 +37,11 @@ class MovieProfile extends Component {
   };
 
   render() {
+   
     return (
-      <div>
-        <div className="container">
+      <div style={{position:'relative'}}>
+       
+        <div  style={{background:`url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${this.state.data.backdrop_path})center/cover  `}} className="container">
           <div className="movieProfileCard">
             <img
               src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.state.data.poster_path}`}
