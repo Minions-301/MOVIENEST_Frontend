@@ -35,7 +35,7 @@ class Movie extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-    this.getMostWatched();
+   // this.getMostWatched();
   }
   getMostWatched = async () => {
     try {
