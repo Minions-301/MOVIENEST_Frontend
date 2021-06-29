@@ -13,8 +13,10 @@
     font-size: small;
     font-weight: bold;
     margin: 3px;
-    margin-bottom: .25px;  
+    margin-bottom: .25px; 
+    
 }
+
 .loginbtn:hover, .loginbtn:focus {
     background: var(--gradient) !important;
 -webkit-background-clip: none !important;
@@ -42,6 +44,7 @@ text-decoration: none;
     font-weight: bold;
     margin: 3px;
     margin-bottom: .25px;  
+    width: fit-content;
 }
 .logoutbtn:hover, .logoutbtn:focus {
     background: var(--gradient) !important;
