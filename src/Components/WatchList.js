@@ -18,19 +18,24 @@ class WatchedList extends React.Component {
                   variant="top"
                   src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.props.movie.moviePoster}`}
                 />
-                <Card.Body>
-                  <Card.Title> {this.props.movie.title}</Card.Title>
-                </Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroupItem> {this.props.movie.release_date}</ListGroupItem>
-                  <ListGroupItem>
-                    vote avg:{this.props.movie.vote_average}
-                  </ListGroupItem>
+                <ListGroupItem className ="date"><Card.Body>
+                  <Card.Title> {this.props.movie.title}</Card.Title>
+                  
+                  </Card.Body>
+                <br/><br/> <p className = "vote">   {this.props.movie.release_date}</p>
+
+                <br/> <br/> <p className = "vot">⭐{this.props.movie.vote_average}/10</p>
+                </ListGroupItem>
+                
+                  {/* <ListGroupItem>
+                  </ListGroupItem> */}
                 </ListGroup>
                 </Link>
                 <Card.Body>
+                <div className = "buttonCard">
                   <Button
-                    class="btn btn-primary"
+                    class="btn"
                     onClick={() => {
                       this.props.deleteMovieFromWatchList(this.props.movie._id);
                     }}
@@ -39,12 +44,13 @@ class WatchedList extends React.Component {
                     DELETE
                   </Button>
                   <Button
-                    class="btn btn-primary"
+                    class="btn "
                     onClick={() => { this.props.moveFromWatchListToWatched(this.props.movie._id) }}
                   >
                     {" "}
                     AS Watched
                   </Button>
+                  </div>
                 </Card.Body>
               </Card>
             )}

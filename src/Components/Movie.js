@@ -98,14 +98,16 @@ class Movie extends React.Component {
           </button>
      
     <select className = "choose"onChange={this.getApicategory}> 
+
         <option value="" disabled selected>SELECT OPTION</option>
-          <option value="35">COMEDY</option>
-          <option value="18">DRAMA</option>
-          <option value="28">ACTION</option>
-          <option value="16">ANIMATION</option>
-          <option value="80">CRIME</option>
+          <option  value="35">COMEDY</option>
+          <option  value="18">DRAMA</option>
+          <option  value="28">ACTION</option>
+          <option  value="16">ANIMATION</option>
+          <option  value="80">CRIME</option>
+       
         </select>
-     
+        
         <p className = "pTg">Most Movies Watched</p>
       
         <Row className="justify-content-md-center">
