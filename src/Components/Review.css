@@ -1,26 +1,39 @@
+.reviewHeader{
+    display: flex;
+}
 .addReviewContainer{
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     gap: 30px;
     padding: 30px 30px;
 }
 
-.addReview{
-    display: flex;
-    gap: 30px;
-}
+
 
 .addReviewImg{
     width: 150px;
     height: 150px;
 }
 
-.review{
+.insideReview{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: fit-content;
+}
+.reviewBorder>p{
+    background-color: #dd247765;
+    padding: 25px;
+    line-height: 25px;
+    
+}
+.reviewBorder{
     display: flex;
     flex-direction: column;
-    gap: 30px;
-}
-
-p{
-    text-align: justify;
+    gap: 10px;
+    color: whitesmoke;
+    border: solid 1px #DD2476;
+    border-radius: 10px;
+    padding: 25px;
 }
