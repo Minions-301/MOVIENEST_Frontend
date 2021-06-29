@@ -4,7 +4,7 @@ import axios from "axios";
 // import MovieCard from "./MovieCard";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import MovieCard1 from "./MovieCard1";
+import MovieCard1 from "./MovieCard";
 
 
 
