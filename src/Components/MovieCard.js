@@ -82,8 +82,8 @@ class MovieCard extends React.Component {
               <ListGroupItem className ="date"><Card.Body>
               <Card.Title> {this.props.movie.title}</Card.Title>
             </Card.Body>
-            <br/><br/> <p> {this.props.movie.release_date}</p>
-            <br/> <p className = "vot">votes avg :{this.props.movie.vote_average}/10</p></ListGroupItem>
+            <br/><br/> <p className = "vote"> {this.props.movie.release_date}</p>
+           <br/> <br/> <p className = "vot">⭐{this.props.movie.vote_average}/10</p></ListGroupItem>
               {/* <ListGroupItem className = "vote">
                 vote avg:{this.props.movie.vote_average}
               </ListGroupItem> */}
@@ -98,7 +98,7 @@ class MovieCard extends React.Component {
               >
                 {" "}
                 
-                ADD TO WATCH LIST
+               ➕  WATCH  
               </Button>
               <Button
                 class="btn"

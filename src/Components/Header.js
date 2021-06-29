@@ -15,7 +15,8 @@ class Header extends React.Component {
             <>
             
                 <Navbar  collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <img className = "logo"src = "https://i.pinimg.com/280x280_RS/04/49/5e/04495e7f52f4ab36c635906a2533753b.jpg" alt = "logoname"/>
+                    <Link to = "/">
+                <img className = "logo"src = "https://i.pinimg.com/280x280_RS/04/49/5e/04495e7f52f4ab36c635906a2533753b.jpg" alt = "logoname"/></Link>
                     <Navbar.Brand className= "navbar">MOVIEnest</Navbar.Brand>
                    
                     <Link to="/">HOME</Link>

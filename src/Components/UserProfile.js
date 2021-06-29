@@ -4,6 +4,8 @@ import { withAuth0 } from '@auth0/auth0-react';
 import { Row, Col } from 'react-bootstrap';
 import WatchedList from './WatchedList';
 import WatchList from './WatchList'
+import './UserProfile.css';
+
 class UserProfile extends React.Component {
     constructor(props) {
         super(props);
@@ -106,7 +108,7 @@ class UserProfile extends React.Component {
         return (
             <>
                 <div className="gap"></div>
-                <h1>Watch List</h1>
+                <h1 className = "watch">Watch List</h1>
                 <Row className="justify-content-md-center">
                     {this.state.watchList.map((movie, index) => (
                         <Col md="auto">
@@ -119,7 +121,7 @@ class UserProfile extends React.Component {
                     ))}
                 </Row>
                 <div className="gap"></div>
-                <h1>Watched List</h1>
+                <h1 className= "watch1">Watched List</h1>
                 <Row className="justify-content-md-center">
                     {this.state.watchedList.map((movie, index) => (
                         <Col md="auto">

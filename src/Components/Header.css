@@ -14,6 +14,7 @@
     font-weight: bold;
     margin: 3px;
     margin-bottom: .25px;  
+    height: 28px;
 }
 .loginbtn:hover, .loginbtn:focus {
     background: var(--gradient) !important;
@@ -41,7 +42,9 @@ text-decoration: none;
     font-size: small;
     font-weight: bold;
     margin: 3px;
-    margin-bottom: .25px;  
+    margin-bottom: .25px; 
+    width: fit-content; 
+    margin-left: 1415px;
 }
 .logoutbtn:hover, .logoutbtn:focus {
     background: var(--gradient) !important;
@@ -71,6 +74,10 @@ text-decoration: none;
     text-decoration: none;
     color: white;
  }
+ a:hover{
+     text-decoration: none;
+     color:white;
+ }
  /* }
  button.loginbtn{
      padding:15px;
@@ -79,4 +86,14 @@ text-decoration: none;
 
  .logo{
      width: 60px;
+     border: .5px solid;
+     border-image-slice: 1;
+     background: var(--gradient) !important;
+     -webkit-background-clip: text !important;
+     -webkit-text-fill-color: transparent !important;
+     border-image-source:  var(--gradient) !important;
+     margin-left: 10px;
  }
+ :root {
+    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+    }

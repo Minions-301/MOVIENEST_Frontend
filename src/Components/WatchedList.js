@@ -1,4 +1,5 @@
 import './WatchedList.css';
+
 import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -9,35 +10,37 @@ class WatchedList extends React.Component {
   render() {
     return (
       <>
-      {console.log(this.props.movie.movie_ID)}
-       
-          <div className='movieCardContainer'>
-            {this.props.movie && (
-              <Card className='mainMovieCard'>
-                 <Link to={`movieProfile/${this.props.movie.movie_ID}`}>
+        {console.log(this.props.movie.movie_ID)}
+
+    
+          {this.props.movie && (
+            <Card className='mainMovie'>
+              <Link to={`movieProfile/${this.props.movie.movie_ID}`}>
                 <Card.Img
-                  className='cardImg'
+                  className='cardIm'
                   variant="top"
                   src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.props.movie.moviePoster}`}
                 />
-                <Card.Body>
+                <ListGroup className="list-group-flus">
+                  <ListGroupItem className="date"><Card.Body>
                   <Card.Title> {this.props.movie.title}</Card.Title>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem> {this.props.movie.release_date}</ListGroupItem>
-                  <ListGroupItem>
-                    vote avg:{this.props.movie.vote_average}
-                  </ListGroupItem>
+                   
+                     
+                    </Card.Body>
+
+                    <br /><br /> <p className="vote1">    {this.props.movie.release_date}</p>
+                    <br /> <br /> <p className="vot1">⭐{this.props.movie.vote_average}/10</p></ListGroupItem>
+                 
                 </ListGroup>
-                <Card.Body>
-                </Card.Body>
+             
+                
                 </Link>
               </Card>
             )}
-          </div>
+         
       
       </>
-    );
+        );
   }
 }
-export default withAuth0(WatchedList);
+        export default withAuth0(WatchedList);
