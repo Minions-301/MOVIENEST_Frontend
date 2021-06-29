@@ -1,3 +1,6 @@
+.reviewHeader{
+    display: flex;
+}
 .addReviewContainer{
     background-color: whitesmoke;
     display: flex;
@@ -19,7 +22,11 @@
 .review{
     display: flex;
     flex-direction: column;
+    padding:15px;
     gap: 30px;
+    border: solid 1px black;
+    border-radius: 10px;
+
 }
 
 p{

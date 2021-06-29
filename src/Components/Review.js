@@ -140,7 +140,12 @@ class Review extends Component {
   render() {
     return (
       <div className="addReviewContainer">
+        <div className='reviewHeader'>
         <h2>Reviews</h2>
+        <Button variant="primary" onClick={this.handleShow}>
+            +
+          </Button>
+        </div>
         <div className="addReview">
           <div className="review">
             <div>
@@ -209,9 +214,7 @@ class Review extends Component {
           </div>
         </div>
         <div className="addNewReview">
-          <Button variant="primary" onClick={this.handleShow}>
-            +
-          </Button>
+
           <>
             <Modal show={this.state.show} onHide={this.handleClose}>
               <Modal.Header closeButton>
