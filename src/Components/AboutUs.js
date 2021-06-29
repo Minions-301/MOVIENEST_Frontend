@@ -1,7 +1,7 @@
 
 
 import { Component } from 'react';
-import './AboutUs.css';
+//import './AboutUs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

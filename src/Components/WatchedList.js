@@ -1,4 +1,4 @@
-import './MovieCard.css';
+import './WatchedList.css';
 import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -10,10 +10,11 @@ class WatchedList extends React.Component {
     return (
       <>
       {console.log(this.props.movie.movie_ID)}
-        <Link to={`movieProfile/${this.props.movie.movie_ID}`}>
+       
           <div className='movieCardContainer'>
             {this.props.movie && (
               <Card className='mainMovieCard'>
+                 <Link to={`movieProfile/${this.props.movie.movie_ID}`}>
                 <Card.Img
                   className='cardImg'
                   variant="top"
@@ -29,29 +30,12 @@ class WatchedList extends React.Component {
                   </ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                  {/* <Button
-                  class="btn btn-primary"
-                  onClick={() => {
-                    this.props.addTowatchList(this.props.movie);
-                  }}
-                >
-                  {" "}
-                  DELETE
-                </Button>
-                <Button
-                  class="btn btn-primary"
-                  onClick={() => {
-                    this.props.addMovieAsWatched(this.props.movie);
-                  }}
-                >
-                  {" "}
-                  AS Watched
-                </Button> */}
                 </Card.Body>
+                </Link>
               </Card>
             )}
           </div>
-        </Link>
+      
       </>
     );
   }

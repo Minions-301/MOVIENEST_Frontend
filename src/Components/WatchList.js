@@ -1,4 +1,4 @@
-import './MovieCard.css';
+import './WatchList.css';
 import React from "react";
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { withAuth0 } from '@auth0/auth0-react';
@@ -9,10 +9,10 @@ class WatchedList extends React.Component {
   render() {
     return (
       <>
-        <Link to={`movieProfile/${this.props.movie.movie_ID||0}`}>
           <div className='movieCardContainer'>
             {this.props.movie && (
               <Card className='mainMovieCard'>
+                        <Link to={`movieProfile/${this.props.movie.movie_ID}`}>
                 <Card.Img
                   className='cardImg'
                   variant="top"
@@ -27,6 +27,7 @@ class WatchedList extends React.Component {
                     vote avg:{this.props.movie.vote_average}
                   </ListGroupItem>
                 </ListGroup>
+                </Link>
                 <Card.Body>
                   <Button
                     class="btn btn-primary"
@@ -48,7 +49,6 @@ class WatchedList extends React.Component {
               </Card>
             )}
           </div>
-        </Link>
       </>
     );
   }
