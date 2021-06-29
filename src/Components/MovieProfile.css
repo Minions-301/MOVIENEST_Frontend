@@ -1,6 +1,7 @@
 .container {
     display: block;
     position: relative;
+    color: whitesmoke;
   }
   
   .container::after {

@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { withAuth0 } from "@auth0/auth0-react";
 import Modal from "react-bootstrap/Modal";
+import Test from './test'
+
 class Review extends Component {
   constructor(props) {
     super(props);
@@ -140,16 +142,21 @@ class Review extends Component {
   render() {
     return (
       <div className="addReviewContainer">
-        <h2>Reviews</h2>
+        <div className="reviewHeader">
+          <h2>Reviews</h2>
+          <Button variant="primary" onClick={this.handleShow}>
+            +
+          </Button>
+        </div>
         <div className="addReview">
           <div className="review">
-            <div>
+            <div className="insideReview">
               {this.state.reviews.map((item) => {
                 return (
-                  <>
-                    <h3>A review by {item.name}</h3>
+                  <div className="reviewBorder">
+                    <Test />
                     <h6>
-                      Written by {item.email} on {item.date}
+                      Written by {item.name} on {item.date}
                     </h6>
                     <p>{item.review_text}</p>
                     <Form>
@@ -202,16 +209,13 @@ class Review extends Component {
                         </Modal>
                       </>
                     </Form>
-                  </>
+                  </div>
                 );
               })}
             </div>
           </div>
         </div>
         <div className="addNewReview">
-          <Button variant="primary" onClick={this.handleShow}>
-            +
-          </Button>
           <>
             <Modal show={this.state.show} onHide={this.handleClose}>
               <Modal.Header closeButton>
