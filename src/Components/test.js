@@ -1,8 +1,8 @@
 import React from "react";
-import { FaBeer } from "@react-icons/all-files/fa/FaBeer";
+import { AiFillPlusCircle } from "react-icons/ai";
 class Question extends React.Component {
   render() {
-    return <h3> <FaBeer /> </h3>
+    return <h3 onClick={this.props.handleShow}>Review this title <AiFillPlusCircle /> </h3>
   }
 }
 export default Question;
