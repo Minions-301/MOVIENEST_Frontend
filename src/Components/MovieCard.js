@@ -4,123 +4,41 @@ import React from "react";
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { withAuth0 } from '@auth0/auth0-react';
 import { Link } from "react-router-dom";
+import Movie from './Movie';
 class MovieCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       addTowatchListState: [],
       movieList: [],
-      isExist: false,
+      isExist: true,
     }
   }
 
-  getIsExist = (movie) => {
   
+  //continue form here
 
+  componentDidMount=()=> {
+    if (this.props.auth0.isAuthenticated) {  this.getIsExist(this.props.movie); }
 
-    
-    const isExist = this.state.movieList.find(item => item.movie_ID === JSON.stringify(movie.id));
+  }
+
+  getIsExist = (movie) => {
+    const isExist = this.props.movieList.find(item => item.movie_ID === JSON.stringify(movie.id));
    
-
     if (typeof isExist == 'undefined') {
       this.setState({ isExist: true })
 
     }
 
   }
-  //continue form here
-  addTowatchList = async (movie) => {
+
   
-  
-    const isExist = this.state.movieList.find(item =>item.movie_ID === JSON.stringify(movie.id));
-
-
-    if (this.props.auth0.isAuthenticated) {
-      //console.log(typeof isExist == 'undefined');
-      if (typeof isExist == 'undefined') {
-
-
-        const movieparam = {
-          movie_ID: movie.id,
-          title: movie.title,
-          overview: movie.overview,
-          moviePoster: movie.poster_path,
-          email: this.props.auth0.user.email,
-          release_date: movie.release_date,
-          vote_average: movie.vote_average,
-        }; try {
-
-          const addTowatchListReq = await axios.post(`${process.env.REACT_APP_SERVER}/movies`, movieparam);
-          this.setState({
-            addTowatchListState: addTowatchListReq.data,
-          })
-        } catch {
-          console.log("Error in  addTowatchList Request");
-        }
-      }
-      else { console.log('is alredy Added'); }
-    } else {
-      console.log('please sign in');
-    }
-
-    this.getMovieList();
-  }
-  componentDidMount=async()=> {
-    if (this.props.auth0.isAuthenticated) { await this.getMovieList(); }
-
-  }
-
-  getMovieList = async () => {
-    try {
-      const movieList = await axios.get(`${process.env.REACT_APP_SERVER}/list?email=${this.props.auth0.user.email}`)
-      await this.setState({
-        movieList: movieList.data,
-      })
-    } catch {
-      console.log("Error in reviews Request");
-    }
-    this.getIsExist(this.props.movie);
-  }
-
-  addMovieAsWatched = async (movie) => {
-   
-    const isExist = this.state.movieList.find(item =>item.movie_ID === JSON.stringify(movie.id));
-   
-
-    if (this.props.auth0.isAuthenticated) {
-   
-      if (typeof isExist == 'undefined') {
-
-        const movieparam = {
-          movie_ID: movie.id,
-          title: movie.title,
-          overview: movie.overview,
-          moviePoster: movie.poster_path,
-          email: this.props.auth0.user.email,
-          release_date: movie.release_date,
-          vote_average: movie.vote_average,
-        }; try {
-
-          const addTowatchListReq = await axios.post(`${process.env.REACT_APP_SERVER}/moviesWatched`, movieparam);
-          this.setState({
-            addTowatchListState: addTowatchListReq.data,
-          })
-        } catch {
-          console.log("Error in  addTowatchList Request");
-        }
-      }
-      else { console.log('is alredy Added'); }
-    } else {
-      console.log('please sign in');
-    }
-    this.getMovieList();
-
-  }
 
   render() {
-    if (this.props.auth0.isAuthenticated) {
-      this.getMovieList();
-    }
+    // if (this.props.auth0.isAuthenticated) {
+    //   this.getMovieList();
+    // }
     return (
       <>
 
@@ -149,13 +67,13 @@ class MovieCard extends React.Component {
               <Card.Body >
 
                 
-                {this.state.isExist ?
+                {this.state.isExist&&this.props.auth0.isAuthenticated?
 
                   <div className="buttonCard">
                     <Button
                       class="btn"
                       onClick={() => {
-                        this.addTowatchList(this.props.movie);
+                        this.props.addTowatchList(this.props.movie);
                       }}
                     >
                       {" "}
@@ -165,7 +83,7 @@ class MovieCard extends React.Component {
                     <Button
                       class="btn"
                       onClick={() => {
-                        this.addMovieAsWatched(this.props.movie);
+                        this.props.addMovieAsWatched(this.props.movie);
                       }}
                     >
                       {" "}

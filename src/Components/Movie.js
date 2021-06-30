@@ -5,7 +5,7 @@ import axios from "axios";
 import { Row, Col } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import MovieCard1 from "./MovieCard";
-
+import { withAuth0 } from '@auth0/auth0-react';
 
 
 class Movie extends React.Component {
@@ -19,10 +19,95 @@ class Movie extends React.Component {
       direct: false,
       category: "",
       query: '',
+      addTowatchListState: [],
+      movieList: [],
     };
   }
+  addTowatchList = async (movie) => {
 
+
+    const isExist = this.state.movieList.find(item => item.movie_ID === JSON.stringify(movie.id));
+
+
+    if (this.props.auth0.isAuthenticated) {
+      //console.log(typeof isExist == 'undefined');
+      if (typeof isExist == 'undefined') {
+
+
+        const movieparam = {
+          movie_ID: movie.id,
+          title: movie.title,
+          overview: movie.overview,
+          moviePoster: movie.poster_path,
+          email: this.props.auth0.user.email,
+          release_date: movie.release_date,
+          vote_average: movie.vote_average,
+        }; try {
+
+          const addTowatchListReq = await axios.post(`${process.env.REACT_APP_SERVER}/movies`, movieparam);
+          this.setState({
+            addTowatchListState: addTowatchListReq.data,
+          })
+        } catch {
+          console.log("Error in  addTowatchList Request");
+        }
+      }
+      else { console.log('is alredy Added'); }
+    } else {
+      console.log('please sign in');
+    }
+
+    this.getMovieList();
+  }
+
+
+  addMovieAsWatched = async (movie) => {
+
+    const isExist = this.state.movieList.find(item => item.movie_ID === JSON.stringify(movie.id));
+
+
+    if (this.props.auth0.isAuthenticated) {
+
+      if (typeof isExist == 'undefined') {
+
+        const movieparam = {
+          movie_ID: movie.id,
+          title: movie.title,
+          overview: movie.overview,
+          moviePoster: movie.poster_path,
+          email: this.props.auth0.user.email,
+          release_date: movie.release_date,
+          vote_average: movie.vote_average,
+        }; try {
+
+          const addTowatchListReq = await axios.post(`${process.env.REACT_APP_SERVER}/moviesWatched`, movieparam);
+          this.setState({
+            addTowatchListState: addTowatchListReq.data,
+          })
+        } catch {
+          console.log("Error in  addTowatchList Request");
+        }
+      }
+      else { console.log('is alredy Added'); }
+    } else {
+      console.log('please sign in');
+    }
+    this.getMovieList();
+
+  }
+
+  getMovieList = async () => {
+    try {
+      const movieList = await axios.get(`${process.env.REACT_APP_SERVER}/list?email=${this.props.auth0.user.email}`)
+      await this.setState({
+        movieList: movieList.data,
+      })
+    } catch {
+      console.log("Error in reviews Request");
+    }
+  }
   componentDidMount() {
+    if (this.props.auth0.isAuthenticated) { this.getMovieList(); }
     const url = ` https://api.themoviedb.org/3/movie/top_rated?api_key=98b1f578c2970f8efbe6ac02bd6a0cd4&language=en-US&page=1`;
     console.log(url);
     axios
@@ -85,6 +170,9 @@ class Movie extends React.Component {
 
   }
   render() {
+    if (this.props.auth0.isAuthenticated) {
+      this.getMovieList();
+    }
     return (
       <>
         {/* <input
@@ -126,7 +214,7 @@ class Movie extends React.Component {
           <Row className="justify-content-md-center">
             {this.state.searchResult.map((item, idx) => (
               <Col md="auto">
-                <MovieCard1 movie={item} key={idx} />
+                <MovieCard1 addMovieAsWatched={this.addMovieAsWatched}addTowatchList={this.addTowatchList} movieList={this.state.movieList} movie={item} key={idx} />
               </Col>
             ))}
           </Row>
@@ -135,4 +223,4 @@ class Movie extends React.Component {
     );
   }
 }
-export default Movie;
+export default withAuth0(Movie);
