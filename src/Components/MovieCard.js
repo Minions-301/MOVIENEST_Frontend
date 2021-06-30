@@ -17,8 +17,8 @@ class MovieCard extends React.Component {
   
 
 
-    // eslint-disable-next-line eqeqeq
-    const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
+    
+    const isExist = this.state.movieList.find(item => item.movie_ID === JSON.stringify(movie.id));
    
 
     if (typeof isExist == 'undefined') {
@@ -30,8 +30,8 @@ class MovieCard extends React.Component {
   //continue form here
   addTowatchList = async (movie) => {
   
-    // eslint-disable-next-line eqeqeq
-    const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
+  
+    const isExist = this.state.movieList.find(item =>item.movie_ID === JSON.stringify(movie.id));
 
 
     if (this.props.auth0.isAuthenticated) {
@@ -83,12 +83,11 @@ class MovieCard extends React.Component {
 
   addMovieAsWatched = async (movie) => {
    
-    // eslint-disable-next-line eqeqeq
-    const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
+    const isExist = this.state.movieList.find(item =>item.movie_ID === JSON.stringify(movie.id));
    
 
     if (this.props.auth0.isAuthenticated) {
-      //console.log(typeof isExist == 'undefined');
+   
       if (typeof isExist == 'undefined') {
 
         const movieparam = {
