@@ -143,12 +143,14 @@ class Review extends Component {
     return (
       <div className="addReviewContainer">
         <div className="reviewHeader">
-          <h2>Reviews</h2>
-          {this.props.auth0.isAuthenticated &&
-            <Button variant="primary" onClick={this.handleShow}>
-              +
-            </Button>
-          }
+          <div className='movieDateTitle'>
+          <h2>{this.props.title}</h2>
+          <h2>({this.props.release_date})</h2>
+          </div>
+          <div className='addReviewIcon'>
+            {this.props.auth0.isAuthenticated &&
+          <Test handleShow={this.handleShow}/>  }
+          </div>
         </div>
         <div className="addReview">
           <div className="review">
@@ -167,6 +169,7 @@ class Review extends Component {
                          </div>
                   
                     }
+
                     <h6>
                       Written by {item.name} on {item.date}
                     </h6>

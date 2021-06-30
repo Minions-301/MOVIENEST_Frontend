@@ -1,5 +1,11 @@
 .reviewHeader{
     display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.movieDateTitle{
+    display: flex;
+    gap: 5px;
 }
 .addReviewContainer{
     color: whitesmoke;
