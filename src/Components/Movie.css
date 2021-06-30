@@ -50,22 +50,36 @@ text-decoration: none;
 }
 
 select.choose{
- 
-    
-    color: rgb(14, 13, 13);
-    margin-top: 8px;
-    margin-left: 82%;
-    font-size: 15px;
-    height :32px ;
     border: 2px solid;
-   border-image-slice: 1;
-   background: var(--gradient) !important;
-   -webkit-background-clip: text !important;
-   -webkit-text-fill-color: transparent !important;
-   border-image-source:  var(--gradient) !important; 
-  text-align: center;
-
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: none;
+    transition: all .4s ease;
+    padding-top: 3px;
+    font-size: small;
+    font-weight: bold;
+    margin-left: 66%;
+    margin-top: 11px;
+    height: 28px;
 }
+select.choose:hover{
+    background: var(--gradient) !important;
+-webkit-background-clip: none !important;
+-webkit-text-fill-color: #fff !important;
+border: 2px solid rgb(31, 30, 30) !important; 
+box-shadow: #222 1px 0 10px;
+text-decoration: none;
+}
+select.choose>option{
+    font-size: small;
+    font-weight: bold;
+   background-color: black;
+   color: #DD2476;
+}
+
 .Search {
     -webkit-box-align: center;
     -webkit-align-items: center;

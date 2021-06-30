@@ -1,4 +1,7 @@
-
+.navbar{
+    display: flex;
+    gap: 60%;
+}
 
 .loginbtn{
     border: 2px solid;
@@ -16,7 +19,6 @@
 
     margin-bottom: .25px;  
     height: 28px;
-
 }
 
 .loginbtn:hover, .loginbtn:focus {
@@ -48,7 +50,7 @@ text-decoration: none;
 
     margin-bottom: .25px; 
     width: fit-content; 
-    margin-left: 1415px;
+
 
 }
 .logoutbtn:hover, .logoutbtn:focus {
@@ -60,20 +62,12 @@ box-shadow: #222 1px 0 10px;
 text-decoration: none;
 }
 
-.navbar{
-    /* margin:auto; */
-    display: grid;
-    grid-template-columns:60px  1fr 70px 90px 110px ;
-    /* justify-content: space-between; */
-  gap :5px;
-}
+
  span.navbar.navbar-brand{
      font-size: 30px;
  }
  .navbar-brand{
     padding-left: 20px; 
-    
-
  }
  a{
     text-decoration: none;
@@ -83,11 +77,6 @@ text-decoration: none;
      text-decoration: none;
      color:white;
  }
- /* }
- button.loginbtn{
-     padding:15px;
-     margin:7px ;
- } */
 
  .logo{
      width: 60px;
