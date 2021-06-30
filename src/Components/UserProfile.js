@@ -144,7 +144,7 @@ class UserProfile extends React.Component {
                     ))}
                 </Row>
                 <div className="gap"></div>
-                <h1 className= "watch1">Watched List</h1>
+                <h1 className= "watch">Watched Movies</h1>
                 <Row className="justify-content-md-center">
                     {this.state.watchedList.map((movie, index) => (
                         <Col md="auto">
