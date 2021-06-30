@@ -32,6 +32,7 @@ class Review extends Component {
       name: this.props.auth0.user.name,
       movie_ID: this.props.movie_ID,
       email: this.props.auth0.user.email,
+      img:this.props.auth0.user.picture,
     };
     try {
       const addReviewReq = await axios.post(
@@ -180,7 +181,7 @@ class Review extends Component {
                       )}
                       <div className='imgandcontent'>
                         <div style={{display:'flex',gap:'30px'}}>
-                    <img className='designImg' src={this.props.auth0.user.picture} alt="img" />
+                    <img className='designImg' src={item.img} alt="img" />
                     <div style={{paddingTop:'30px',display:'flex',flexDirection:'column',gap:'10px'}}>
                     <h6>
                       Written by {item.name} 
