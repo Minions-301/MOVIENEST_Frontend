@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { withAuth0 } from '@auth0/auth0-react';
+import { Link } from "react-router-dom";
 class MovieCard extends React.Component {
   constructor(props) {
     super(props);
@@ -127,6 +128,7 @@ class MovieCard extends React.Component {
         <div className='movieCardContainer'>
           {this.props.movie && (
             <Card className='mainMovieCard'>
+              <Link to={`movieProfile/${this.props.movie.id}`}>
               <Card.Img
                 className='cardImg'
                 variant="top"
@@ -143,6 +145,7 @@ class MovieCard extends React.Component {
                 vote avg:{this.props.movie.vote_average}
               </ListGroupItem> */}
               </ListGroup>
+              </Link>
               <Card.Body >
 
                 
