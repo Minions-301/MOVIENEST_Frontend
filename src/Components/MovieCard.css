@@ -10,7 +10,7 @@
    background: #222;
    border: 2px solid #dd2476;
    color:white;
-   margin-bottom: 2rem;
+   margin-bottom: 5em;
    
 
 }
@@ -18,19 +18,21 @@
     background: #222;
     border: 1px solid #dd2476;
     color: white;
-    margin-bottom: 2rem;
     overflow: hidden;
     text-align: center;
 }
-.btndis{
+.buttonCardDis button:disabled,
+.buttonCardDis button[disabled]{
   border: 2px solid;
-  padding-top: 3px;
-  font-size: 15px;
+ 
+  font-size: 0.2em;
+  color: white;
   font-weight: bold;
-  margin: 3px;
+  margin-top: 0.1em;
   box-shadow: #222 1px 0 10px;
   text-decoration: none;
-
+  background-color: #dd2476;
+  
 }
 .btn {
     border: 2px solid;
@@ -87,11 +89,17 @@
         text-align: center;
     }
     .buttonCard{
-        margin-left: 18px;
+      margin-left: 0.9em;
 
         margin-top: 1px;
        
 
     }
-    
+    .buttonCardDis{
+      margin-left: 0.9em;
+      padding-bottom: 1em;
+    }
+    .buttonCardDis #addedItem{
+      margin-top: 0.4em;
+    }
 

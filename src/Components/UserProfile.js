@@ -18,26 +18,7 @@ class UserProfile extends React.Component {
             email: user.email,
         };
     }
-    // addMovieToWatchList=async(movie)=>{
-    //     const  req= {
-    //         movie_ID: movie.movie_ID,
-    //         email: this.props.auth0.user.email,
-    //         title:movie.title,
-    //         overview:movie.overview, 
-    //         release_date:movie.release_date,
-    //         vote_average:movie.vote_average
-    //     };
-    //     try {
-    //         const watchList = await axios.post(`${process.env.REACT_APP_SERVER}/movies`,req);
-    //       this.setState({
-    //           watchList:watchList
-    //       })
 
-    //     } catch(err) {
-    //         console.log(err);
-    //     }
-
-    // }
     moveFromWatchListToWatched = async (id) => {
         console.log(id);
         const  query= {
