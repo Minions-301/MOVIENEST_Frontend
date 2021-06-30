@@ -14,14 +14,12 @@ class MovieCard extends React.Component {
   }
 
   getIsExist = (movie) => {
-    console.log(movie);
-
-    console.log("movie list",this.state.movieList);
+  
 
 
     // eslint-disable-next-line eqeqeq
     const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
-    console.log(typeof isExist);
+   
 
     if (typeof isExist == 'undefined') {
       this.setState({ isExist: true })
@@ -31,10 +29,10 @@ class MovieCard extends React.Component {
   }
   //continue form here
   addTowatchList = async (movie) => {
-    console.log(movie.id);
+  
     // eslint-disable-next-line eqeqeq
     const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
-    console.log(typeof isExist);
+
 
     if (this.props.auth0.isAuthenticated) {
       //console.log(typeof isExist == 'undefined');
@@ -84,10 +82,10 @@ class MovieCard extends React.Component {
   }
 
   addMovieAsWatched = async (movie) => {
-    console.log(movie.id);
+   
     // eslint-disable-next-line eqeqeq
     const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
-    console.log(typeof isExist);
+   
 
     if (this.props.auth0.isAuthenticated) {
       //console.log(typeof isExist == 'undefined');
@@ -148,7 +146,7 @@ class MovieCard extends React.Component {
               </ListGroup>
               <Card.Body >
 
-                {console.log(this.state.isExist)}
+                
                 {this.state.isExist ?
 
                   <div className="buttonCard">

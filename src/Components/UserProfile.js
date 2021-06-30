@@ -20,7 +20,7 @@ class UserProfile extends React.Component {
     }
 
     moveFromWatchListToWatched = async (id) => {
-        console.log(id);
+      
         const  query= {
             email: this.props.auth0.user.email,
             id:id
@@ -28,9 +28,9 @@ class UserProfile extends React.Component {
         
         try {
             const watchList = await axios.put(`${process.env.REACT_APP_SERVER}/watchList`,query);
-            console.log(process.env.REACT_APP_SERVER);
+         
 
-            console.log(watchList);
+            
           this.getWatchedList();
           this.getWatchList();
 
@@ -39,14 +39,14 @@ class UserProfile extends React.Component {
         }
     }
     deleteMovieFromWatchList=async(id)=>{
-        console.log(id,this.props.auth0.user.email);
+     
         const  query = {
             email: this.props.auth0.user.email
         };
-        console.log(query);
+       
         try {
             const watchList = await axios.delete(`${process.env.REACT_APP_SERVER}/watchList/${id}`,{ params:query});
-           console.log(watchList);
+      
            this.getWatchedList();
            this.getWatchList();
  
@@ -66,7 +66,7 @@ class UserProfile extends React.Component {
     getWatchedList = async () => {
         try {
             const watchedList = await axios.get(`${process.env.REACT_APP_SERVER}/watchedList?email=${this.props.auth0.user.email}`)
-            console.log(watchedList.data);
+           
             this.setState({
                 watchedList: watchedList.data,
             })
@@ -78,7 +78,7 @@ class UserProfile extends React.Component {
     getWatchList = async () => {
         try {
             const watchList = await axios.get(`${process.env.REACT_APP_SERVER}/watchList?email=${this.props.auth0.user.email}`)
-            console.log(watchList.data);
+          
             this.setState({
                 watchList: watchList.data,
             })
