@@ -3,7 +3,6 @@ import axios from "axios";
 import React from "react";
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 import { withAuth0 } from '@auth0/auth0-react';
-import { Link } from "react-router-dom";
 class MovieCard extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +16,7 @@ class MovieCard extends React.Component {
   getIsExist=(movie)=>{
     console.log(movie);
     console.log("movie list",this.state.movieList);
+    // eslint-disable-next-line eqeqeq
     const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
     console.log(typeof isExist);
 
@@ -29,6 +29,7 @@ class MovieCard extends React.Component {
   //continue form here
   addTowatchList = async (movie) => {
     console.log(movie.id);
+    // eslint-disable-next-line eqeqeq
     const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
     console.log(typeof isExist);
 
@@ -80,6 +81,7 @@ class MovieCard extends React.Component {
 
   addMovieAsWatched = async (movie) => {
     console.log(movie.id);
+    // eslint-disable-next-line eqeqeq
     const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
     console.log(typeof isExist);
 
