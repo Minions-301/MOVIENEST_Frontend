@@ -75,7 +75,7 @@ class MovieProfile extends Component {
             </div>
           </div>
         </div>
-        <Review movie_ID={this.props.match.params.id} title={this.state.data.title} release_date={this.state.data.release_date}/>
+        <Review movie_ID={this.props.match.params.id}data={this.state.data} title={this.state.data.title} release_date={this.state.data.release_date}/>
       </div>
     );
   }
