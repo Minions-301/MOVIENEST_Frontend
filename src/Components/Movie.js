@@ -87,15 +87,6 @@ class Movie extends React.Component {
   render() {
     return (
       <>
-        {/* <input
-            className="input"
-            name="query"
-            placeholder="Search a film..."
-            onChange={this.searchtext}
-          />
-          <button onClick={this.getApiQuery} className = "searchbtn" type="submit" icon="search">
-            SEARCH
-          </button> */}
         <div id="search" className="Search">
           <input onKeyUp={this.getApiQuery} onChange={this.searchtext} type="search" placeholder="Search for a title..." value={this.state.searchTerm} />
         </div>
@@ -110,8 +101,6 @@ class Movie extends React.Component {
           <option value="80">CRIME</option>
 
         </select>
-
-        <p className="pTg">Most Movies Watched</p>
 
         <Row className="justify-content-md-center">
           {this.state.mostWatched.map((item, idx) => (
