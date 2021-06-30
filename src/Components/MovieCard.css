@@ -1,30 +1,32 @@
-.cardImg{
-    width: 15rem;
-    width: 100%;
-    
-}
-
-.mainMovieCard{
-    width: 15rem;
-   height: 38rem;
-   background: #222;
-   border: 2px solid #dd2476;
-   color:white;
-   margin-bottom: 5em;
-   
+.cardImg {
+  width: 15rem;
+  width: 100%;
 
 }
-.list-group-item{
-    background: #222;
-    border: 1px solid #dd2476;
-    color: white;
-    overflow: hidden;
-    text-align: center;
+
+.mainMovieCard {
+  width: 15rem;
+  height: 38rem;
+  background: #222;
+  border: 2px solid #dd2476;
+  color: white;
+  margin-bottom: 5em;
+
+
 }
+
+.list-group-item {
+  background: #222;
+  border: 1px solid #dd2476;
+  color: white;
+  overflow: hidden;
+  text-align: center;
+}
+
 .buttonCardDis button:disabled,
-.buttonCardDis button[disabled]{
+.buttonCardDis button[disabled] {
   border: 2px solid;
- 
+
   font-size: 0.2em;
   color: white;
   font-weight: bold;
@@ -32,74 +34,81 @@
   box-shadow: #222 1px 0 10px;
   text-decoration: none;
   background-color: #dd2476;
-  
+
 }
+
 .btn {
-    border: 2px solid;
-    border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    border-image-source:  var(--gradient) !important; 
-    text-decoration: none;
-    transition: all .4s ease;
-    padding-top: 3px;
-    font-size: 15px;
-    font-weight: bold;
-    margin: 3px;
-    /* margin-bottom: .30px; */
-   
+  position: relative;
+  bottom: 20px;
+  border: 2px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+  transition: all .4s ease;
+  padding-top: 3px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 3px;
+  /* margin-bottom: .30px; */
+
   width: 95px;
   height: 55px;
- 
-  
- 
-  }
-  
-  .btn:hover, .btn:focus {
-        background: var(--gradient) !important;
-    -webkit-background-clip: none !important;
-    -webkit-text-fill-color: #fff !important;
-    border: 2px solid rgb(31, 30, 30) !important; 
-    box-shadow: #222 1px 0 10px;
-    text-decoration: none;
-  }
-  :root {
-    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
-  }
-  
-  body {
-    background: #111 !important;
-  }
-  
- .vote{
-    text-align: center;
- }
- .card-body{
-    height: 35px; 
-    padding: 4px 1px;
+}
 
-   
- }
- .card-footer {
-    border-top: 0;
-    }
-    .vot{
-        color:white;
-        text-align: center;
-    }
-    .buttonCard{
-      margin-left: 0.9em;
+.btn:hover,
+.btn:focus {
+  background: var(--gradient) !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 2px solid rgb(31, 30, 30) !important;
+  box-shadow: #222 1px 0 10px;
+  text-decoration: none;
+}
 
-        margin-top: 1px;
-       
+:root {
+  --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+}
 
-    }
-    .buttonCardDis{
-      margin-left: 0.9em;
-      padding-bottom: 1em;
-    }
-    .buttonCardDis #addedItem{
-      margin-top: 0.4em;
-    }
+body {
+  background: #111 !important;
+}
 
+.vote {
+  text-align: center;
+}
+
+.card-body {
+  height: 35px;
+  padding: 4px 1px;
+
+
+}
+
+.card-footer {
+  border-top: 0;
+}
+
+.vot {
+  color: white;
+  text-align: center;
+}
+
+.buttonCard {
+  margin-left: 0.9em;
+
+  margin-top: 1px;
+
+
+}
+
+.buttonCardDis {
+  margin-left: 0.9em;
+  padding-bottom: 1em;
+}
+
+.buttonCardDis #addedItem {
+  margin-top: 0.4em;
+}
