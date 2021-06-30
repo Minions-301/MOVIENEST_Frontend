@@ -39,40 +39,35 @@ class MovieProfile extends Component {
   render() {
    
     return (
-      <div style={{position:'relative'}}>
+      <div style={{position:'relative',padding:'30px'}}>
        
-        <div  style={{background:`url(https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${this.state.data.backdrop_path})center/cover  `}} className="container">
+        <div className="container">
           <div className="movieProfileCard">
             <img
               src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.state.data.poster_path}`}
               alt="poster"
             />
-            <div>
-              <h2>{this.state.data.title}</h2>
+            
+            <div className='movieProfileInformation' >
+              <div style={{display:'flex',gap:'10px',fontSize:'35px'}}>
+            <h1>{this.state.data.title}</h1>
+            <h2>({this.state.data.release_date})</h2>
+            </div>
+              <div className='type'>
+              
+              <p>Type: </p>
               {this.state.test.map((item) => {
                 return <p>{item.name}</p>;
               })}
-              <ul>
-                <li>add to favorate</li>
-                <li>add to watch list</li>
-                <li>rate this movie</li>
-                <li>
-                  {" "}
-                  <a
-                    href={`https://www.youtube.com/embed/${this.state.trailer}`}
-                  >
-                    Trailer
-                  </a>
-                </li>
-              </ul>
-              <p>Overview: {this.state.data.overview}</p>
+              </div>
+              <p >Overview: {this.state.data.overview}</p>
               <p>Vote: {this.state.data.vote_average} %</p>
               <div className="cast">
                 <p>Cast: </p>
                 {this.state.cast.map((item) => {
                   return (
                     <>
-                      <p> {item.name}, </p>
+                      <p> {item.name} </p>
                     </>
                   );
                 })}

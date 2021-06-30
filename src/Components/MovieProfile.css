@@ -1,12 +1,16 @@
 .container {
+  padding: 30px;
+    background: linear-gradient( 
+		180deg
+		 ,#6d0232, #18181867);
     display: block;
     position: relative;
     color: whitesmoke;
+    color: black;
   }
   
   .container::after {
     content: "";
-    
     opacity: 0.5;
     top: 0;
     left: 0;
@@ -16,9 +20,7 @@
     z-index: -1;   
   }
   
-  h1{
-    text-align: center;
-  }
+
   
   img{
     width: 25%;
@@ -37,4 +39,27 @@
   
   .cast{
     display: flex;
+    gap: 10px;
   }
+  .type{
+    display: flex;
+    gap: 10px;
+  }
+
+.movieProfileInformation{
+  color: whitesmoke;
+  font-weight: bold;
+  font-family: system-ui;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+}
+  
+.movieProfileInformation>h1{
+  font-size: 50px;
+}
+
+.movieProfileInformation:nth-child(2){
+  line-height: 20px;
+}

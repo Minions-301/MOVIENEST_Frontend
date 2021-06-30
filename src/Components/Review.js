@@ -5,8 +5,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { withAuth0 } from "@auth0/auth0-react";
 import Modal from "react-bootstrap/Modal";
-import Test from './test'
-import { FiTrash2,FiEdit } from "react-icons/fi";
+import Test from "./test";
+import { FiTrash2, FiEdit } from "react-icons/fi";
 class Review extends Component {
   constructor(props) {
     super(props);
@@ -143,13 +143,14 @@ class Review extends Component {
     return (
       <div className="addReviewContainer">
         <div className="reviewHeader">
-          <div className='movieDateTitle'>
-          <h2>{this.props.title}</h2>
-          <h2>({this.props.release_date})</h2>
+          <div className="movieDateTitle">
+            <h1>Reviews</h1>
+            
           </div>
-          <div className='addReviewIcon'>
-            {this.props.auth0.isAuthenticated &&
-          <Test handleShow={this.handleShow}/>  }
+          <div className="addReviewIcon">
+            {this.props.auth0.isAuthenticated && (
+              <Test handleShow={this.handleShow} />
+            )}
           </div>
         </div>
         <div className="addReview">
@@ -158,42 +159,41 @@ class Review extends Component {
               {this.state.reviews.map((item) => {
                 return (
                   <div className="reviewBorder ">
-                       {this.props.auth0.isAuthenticated &&
-                        this.props.auth0.user.email === item.email &&
-                        <div style={{display:'inline-flex',marginLeft:'87%'}}>
-                        <h1  onClick={() => this.deleteReview(item._id)}> <FiTrash2 /> </h1>
-                       <h1 style={{marginLeft:'10px'}}
-                        onClick={() => this.handleUpdateShow(item.review_text)}>
-                          <FiEdit/>
+                    {this.props.auth0.isAuthenticated &&
+                      this.props.auth0.user.email === item.email && (
+                        <div
+                          style={{ display: "inline-flex", marginLeft: "87%" }}
+                        >
+                          <h1 onClick={() => this.deleteReview(item._id)}>
+                            {" "}
+                            <FiTrash2 />{" "}
                           </h1>
-                         </div>
-                  
-                    }
-
+                          <h1
+                            style={{ marginLeft: "10px" }}
+                            onClick={() =>
+                              this.handleUpdateShow(item.review_text)
+                            }
+                          >
+                            <FiEdit />
+                          </h1>
+                        </div>
+                      )}
+                      <div className='imgandcontent'>
+                        <div style={{display:'flex',gap:'30px'}}>
+                    <img className='designImg' src={this.props.auth0.user.picture} alt="img" />
+                    <div style={{paddingTop:'30px',display:'flex',flexDirection:'column',gap:'10px'}}>
                     <h6>
-                      Written by {item.name} on {item.date}
+                      Written by {item.name} 
                     </h6>
-                    <p>{item.review_text}</p>
+                    <h6>On {item.date}</h6>
+                    </div>
+                    </div>
+                    <div className='contentOfReview'>
+                    
+                    <p style={{background:'#dd247765',padding:'25px',lineHeight:'25px'}}>{item.review_text}</p>
                     <Form>
                       <Form.Group className="mb-3"></Form.Group>
-                      {/* {this.props.auth0.isAuthenticated &&
-                        this.props.auth0.user.email === item.email &&
-                        <Button
-                          variant="primary"
-                          onClick={() => this.handleUpdateShow(item.review_text)}
-                        >
-                          Update
-                        </Button>
-                      }
-                      {this.props.auth0.isAuthenticated &&
-                        this.props.auth0.user.email === item.email &&
-                        <Button
-                          variant="primary"
-                          onClick={() => this.deleteReview(item._id)}
-                        >
-                          Delete
-                        </Button>
-                      } */}
+                      
                       <>
                         <Modal
                           show={this.state.updateShow}
@@ -229,6 +229,8 @@ class Review extends Component {
                         </Modal>
                       </>
                     </Form>
+                    </div>
+                    </div>
                   </div>
                 );
               })}
