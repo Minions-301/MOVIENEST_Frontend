@@ -10,7 +10,21 @@ class MovieCard extends React.Component {
     this.state = {
       addTowatchListState: [],
       movieList: [],
+      isExist:false,
     }
+  }
+
+  getIsExist=(movie)=>{
+    console.log(movie);
+    console.log("movie list",this.state.movieList);
+    const isExist = this.state.movieList.find(item => item.movie_ID == movie.id);
+    console.log(typeof isExist);
+
+    if (typeof isExist == 'undefined') {
+      this.setState({isExist:true})
+    
+    }
+
   }
   //continue form here
   addTowatchList = async (movie) => {
@@ -48,7 +62,9 @@ class MovieCard extends React.Component {
 
     this.getMovieList();
   }
-  componentDidMount() { if (this.props.auth0.isAuthenticated) {this.getMovieList()} }
+  componentDidMount() { if (this.props.auth0.isAuthenticated) {this.getMovieList();}
+  
+ }
 
   getMovieList = async () => {
     try {
@@ -59,7 +75,7 @@ class MovieCard extends React.Component {
     } catch {
       console.log("Error in reviews Request");
     }
-
+    this.getIsExist(this.props.movie);
   }
 
   addMovieAsWatched = async (movie) => {
@@ -122,7 +138,11 @@ class MovieCard extends React.Component {
               </ListGroupItem> */}
             </ListGroup>
             <Card.Body >
-              <div className = "buttonCard">
+             
+                {console.log(this.state.isExist)}
+                {this.state.isExist?
+                  
+                  <div className = "buttonCard">
               <Button
                 class="btn"
                 onClick={() => {
@@ -136,13 +156,37 @@ class MovieCard extends React.Component {
               <Button
                 class="btn"
                 onClick={() => {
-                  this.addTowatchList(this.props.movie);
+                  this.addMovieAsWatched(this.props.movie);
                 }}
               >
                 {" "}
                 AS Watched
               </Button>
-              </div>
+              </div>:
+                      <>
+                      <Button
+                      
+                        class="btndis"
+                        onClick={() => {
+                          this.addTowatchList(this.props.movie);
+                        }}
+                      >
+                        {" "}
+                        
+                       ➕  WATCH  
+                      </Button>
+                      <Button
+                     
+                        class="btn1"
+                        onClick={() => {
+                          this.addMovieAsWatched(this.props.movie);
+                        }}
+                      >
+                        {" "}
+                        AS Watched
+                      </Button>
+                      </>}
+              
             </Card.Body>
           </Card>
 //           <Image src={require(`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${this.props.movie.poster_path}`)} style={{width: '100%', height: '100%'}}>

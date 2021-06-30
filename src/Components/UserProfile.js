@@ -5,14 +5,17 @@ import { Row, Col } from 'react-bootstrap';
 import WatchedList from './WatchedList';
 import WatchList from './WatchList'
 import './UserProfile.css';
-
+import { FaGithub, FaFacebook, FaTwitter, FaBehance } from "react-icons/fa";
+import './ProfileCard.css';
 class UserProfile extends React.Component {
     constructor(props) {
         super(props);
+        const { user } = this.props.auth0;
         this.state = {
             watchedList: [],
             watchList: [],
-
+            user:user,
+            email: user.email,
         };
     }
     // addMovieToWatchList=async(movie)=>{
@@ -107,6 +110,45 @@ class UserProfile extends React.Component {
     render() {
         return (
             <>
+              <aside class="profile-card">
+          <header>
+            <a target="_blank" rel="noopener noreferrer" href={() => false}>
+              <img
+                src={this.state.user.picture}
+                class="hoverZoomLink"
+                alt="dd"
+              />
+            </a>
+
+            <h1 style={{ color: "#fff",fontSize:"1rem" }}>{this.state.user.name}</h1>
+
+            <h2 style={{ color: "#fff",fontSize:"1rem" }}>{this.state.user.email}</h2>
+          </header>
+
+          <ul class="profile-social-links">
+            <li>
+              <a rel="noopener noreferrer" target="_blank" href="https://www.facebook.com/creativedonut">
+                <FaFacebook size={70} />
+              </a>
+            </li>
+            <li>
+              <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/dropyourbass">
+                <FaTwitter size={70} />
+              </a>
+            </li>
+            <li>
+              <a rel="noopener noreferrer" target="_blank" href="https://github.com/vipulsaxena">
+                <FaGithub size={70} />
+              </a>
+            </li>
+            <li>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.behance.net/vipulsaxena">
+                <FaBehance size={70} />
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <div className="gapProfile"></div>
                 <div className="gap"></div>
                 <h1 className = "watch">Watch List</h1>
                 <Row className="justify-content-md-center">
