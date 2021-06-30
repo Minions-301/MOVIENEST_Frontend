@@ -13,7 +13,7 @@ class AboutUs extends Component {
         return (
             <>
             <p className = "title">ABOUT US</p>
-            <div className = "container">
+            <div className = "Aboutuscontainer">
             <Row className="justify-content-start">
         <div className="col-4">
               <div className="card1">

@@ -22,7 +22,16 @@
     overflow: hidden;
     text-align: center;
 }
+.btndis{
+  border: 2px solid;
+  padding-top: 3px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 3px;
+  box-shadow: #222 1px 0 10px;
+  text-decoration: none;
 
+}
 .btn {
     border: 2px solid;
     border-image-slice: 1;

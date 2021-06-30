@@ -35,7 +35,7 @@ class Movie extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-   // this.getMostWatched();
+    // this.getMostWatched();
   }
   getMostWatched = async () => {
     try {
@@ -77,17 +77,17 @@ class Movie extends React.Component {
       console.log(error);
     }
   };
-  searchtext=(e)=>{
+  searchtext = (e) => {
     this.setState({
-      query:e.target.value
+      query: e.target.value
     })
-    
+
 
   }
   render() {
     return (
       <>
-        <input
+        {/* <input
             className="input"
             name="query"
             placeholder="Search a film..."
@@ -95,21 +95,24 @@ class Movie extends React.Component {
           />
           <button onClick={this.getApiQuery} className = "searchbtn" type="submit" icon="search">
             SEARCH
-          </button>
-     
-    <select className = "choose"onChange={this.getApicategory}> 
+          </button> */}
+        <div id="search" className="Search">
+          <input onKeyUp={this.getApiQuery} onChange={this.searchtext} type="search" placeholder="Search for a title..." value={this.state.searchTerm} />
+        </div>
 
-        <option value="" disabled selected>SELECT OPTION</option>
-          <option  value="35">COMEDY</option>
-          <option  value="18">DRAMA</option>
-          <option  value="28">ACTION</option>
-          <option  value="16">ANIMATION</option>
-          <option  value="80">CRIME</option>
-       
+        <select className="choose" onChange={this.getApicategory}>
+
+          <option value="" disabled selected>SELECT OPTION</option>
+          <option value="35">COMEDY</option>
+          <option value="18">DRAMA</option>
+          <option value="28">ACTION</option>
+          <option value="16">ANIMATION</option>
+          <option value="80">CRIME</option>
+
         </select>
-        
-        <p className = "pTg">Most Movies Watched</p>
-      
+
+        <p className="pTg">Most Movies Watched</p>
+
         <Row className="justify-content-md-center">
           {this.state.mostWatched.map((item, idx) => (
             <Col md="auto">
@@ -118,15 +121,15 @@ class Movie extends React.Component {
           ))}
         </Row>
         <Form onSubmit={this.getApiQuery}>
-        
 
-        <Row className="justify-content-md-center">
-          {this.state.searchResult.map((item, idx) => (
-            <Col md="auto">
-              <MovieCard1 movie={item} key={idx} />
-            </Col>
-          ))}
-        </Row>
+
+          <Row className="justify-content-md-center">
+            {this.state.searchResult.map((item, idx) => (
+              <Col md="auto">
+                <MovieCard1 movie={item} key={idx} />
+              </Col>
+            ))}
+          </Row>
         </Form>
       </>
     );
