@@ -20,7 +20,7 @@ class AboutUs extends Component {
           <img src='https://avatars.githubusercontent.com/u/35060587?v=4' alt= "" />
           <div className="card-body1">
             <h2>Ali Rahhal</h2>
-            <p>kljkljklju sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <p>I studied .</p>
             <h5>Full Stack Developer</h5>
           </div>
         </div>
@@ -33,7 +33,7 @@ class AboutUs extends Component {
           <img src='https://avatars.githubusercontent.com/u/81553101?v=4' alt= "" />
           <div className="card-body1">
             <h2>Dina Albarghouthi</h2>
-            <p>I studied French language and literature, worked about 2 years in tourism field,I'm software development student in ASAC.</p>
+            <p> I studied computer science , worked for 3 years as .NET developer,I'm software development student in ASAC.</p>
             <h5>Full Stack Developer</h5>
           </div>
         </div>
@@ -72,7 +72,7 @@ class AboutUs extends Component {
           <img src='https://avatars.githubusercontent.com/u/71585645?v=4' alt= "" />
           <div className="card-body1">
             <h2>Mahmoud Al mahmoud</h2>
-            <p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <p> I studied software engineer ,I'm software development student in ASAC..</p>
             <h5>Full Stack Developer</h5>
           </div>
         </div>
