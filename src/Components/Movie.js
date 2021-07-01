@@ -170,9 +170,6 @@ class Movie extends React.Component {
 
   }
   render() {
-    if (this.props.auth0.isAuthenticated) {
-      this.getMovieList();
-    }
     return (
       <>
         <div id="search" className="Search">
@@ -198,7 +195,6 @@ class Movie extends React.Component {
           ))}
         </Row>
         <Form onSubmit={this.getApiQuery}>
-
 
           <Row className="justify-content-md-center">
             {this.state.searchResult.map((item, idx) => (
